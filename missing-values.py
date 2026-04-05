@@ -1,20 +1,25 @@
-name = input("Enter your name: ")
+n = int(input("Enter number of elements: "))
 
-if name == "":
-    name = "Guest"
+arr = []
+for i in range(n):
+    val = int(input("Enter element (-1 for missing): "))
+    arr.append(val)
 
-age = input("Enter your age: ")
+# Calculate mean of available values
+sum_val = 0
+count = 0
 
-if age == "":
-    age = 18
-else:
-    age = int(age)
+for i in arr:
+    if i != -1:
+        sum_val += i
+        count += 1
 
-city = input("Enter your city: ")
+mean = sum_val / count
 
-if city == "":
-    city = "Unknown"
+# Replace missing values
+for i in range(len(arr)):
+    if arr[i] == -1:
+        arr[i] = mean
 
-print("Name:", name)
-print("Age:", age)
-print("City:", city)
+print("Array after handling missing values:")
+print(arr)
